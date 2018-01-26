@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+<title> Bob the Blob </title>
+<style>
+canvas {
+    border: 10px #CCC solid;
+}
+</style>
+</head>
+ 
+<body>
+    <p> Hello There</p>
+<div id="container">
+    <canvas id="myCanvas" height="600" width="647"></canvas>
+</div>
+
+<script>
+ var mainCanvas = document.querySelector("#myCanvas");
+var mainContext = mainCanvas.getContext("2d");
+ 
+var canvasWidth = mainCanvas.width;
+var canvasHeight = mainCanvas.height;
+
+var angle = 0;
+
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+
+ 
+function drawCircle() {
+  mainContext.clearRect(0,0, canvasWidth, canvasHeight);
+     
+    // color in the background
+    mainContext.fillStyle = "#00ff38";
+    mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 125 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(325, 250, radius, 0, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "#fd00ff";
+    mainContext.fill();
+    
+    angle += Math.PI / 64;
+    
+     requestAnimationFrame(drawCircle);
+}
+drawCircle();
+
+</script>
+<p> Hello There</p>
+
+</body>
+</html>
