@@ -61,6 +61,13 @@ ctx.moveTo(150, 250);
 ctx.bezierCurveTo(20, 100, 200, 100, 200, 120);
 ctx.stroke();
 
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.moveTo(150, 250);
+ctx.bezierCurveTo(450, 450, 150, 300, 100, 350);
+ctx.stroke();
+
 </script> 
 </body>
 </html>
