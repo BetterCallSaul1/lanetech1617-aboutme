@@ -17,7 +17,7 @@ canvas {
 </div>
 
 <script>
- var mainCanvas = document.querySelector("#myCanvas");
+var mainCanvas = document.querySelector("#myCanvas");
 var mainContext = mainCanvas.getContext("2d");
  
 var canvasWidth = mainCanvas.width;
@@ -32,28 +32,124 @@ var requestAnimationFrame = window.requestAnimationFrame ||
 
  
 function drawCircle() {
-  mainContext.clearRect(0,0, canvasWidth, canvasHeight);
+  mainContext.clearRect(100,20, canvasWidth, canvasHeight);
      
     // color in the background
-    mainContext.fillStyle = "#00ff38";
+    mainContext.fillStyle = "White";
     mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
      
     // draw the circle
     mainContext.beginPath();
     
       var radius = 125 + 250 * Math.abs(Math.cos(angle));
-    mainContext.arc(325, 250, radius, 0, Math.PI * 2, false);
+    mainContext.arc(325, 200, radius, 4, Math.PI * 2, false);
     mainContext.closePath();
      
     // color in the circle
-    mainContext.fillStyle = "#fd00ff";
+    mainContext.fillStyle = "#B90000";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle);
+     
+     
+     
+     
+}
+drawCircle();
+
+function drawCircle2() {
+ 
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 15 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(350, 550, radius, 7, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Yellow";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle2);
+     
+     
+}
+drawCircle2();
+
+function drawCircle3() {
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 300 + 300 * Math.abs(Math.cos(angle));
+    mainContext.arc(20, 40, radius, 2, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Green";
     mainContext.fill();
     
     angle += Math.PI / 64;
     
-     requestAnimationFrame(drawCircle);
+     requestAnimationFrame(drawCircle3);
+     
+     
 }
-drawCircle();
+drawCircle3();
+
+function drawCircle4() {
+ 
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 15 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(50, 150, radius, 4, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Red";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle4);
+     
+     
+}
+drawCircle4();
+
+function drawCircle5() {
+ 
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 15 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(10, 20, radius, 2.5, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Black";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle5);
+     
+     
+}
+drawCircle5();
+
 
 </script>
 <p> Hello There</p>
