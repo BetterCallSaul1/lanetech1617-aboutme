@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+<title> Bob the Blob </title>
+<style>
+canvas {
+    border: 10px #CCC solid;
+}
+</style>
+</head>
+ 
+ <svg height="100" width="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+  Sorry, your browser does not support inline SVG.  
+</svg> 
+ 
+<body>
+    <p> Snape the Snake</p>
+<div id="container">
+    <canvas id="myCanvas" height="600" width="647"></canvas>
+</div>
+
+<script>
+var mainCanvas = document.querySelector("#myCanvas");
+var mainContext = mainCanvas.getContext("2d");
+ 
+var canvasWidth = mainCanvas.width;
+var canvasHeight = mainCanvas.height;
+
+var angle = 0;
+
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+
+ 
+function drawCircle() {
+  mainContext.clearRect(100,20, canvasWidth, canvasHeight);
+     
+    // color in the background
+    mainContext.fillStyle = "White";
+    mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 125 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(325, 200, radius, 4, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Silver";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle);
+     
+     
+     
+     
+}
+drawCircle();
+
+function drawCircle2() {
+ 
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 15 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(350, 450, radius, 9.5, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "#9C640C";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle2);
+     
+     
+}
+drawCircle2();
+
+function drawCircle4() {
+ 
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 15 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(250, 250, radius, 4, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Silver";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle4);
+     
+     
+}
+drawCircle4();
+
+function drawCircle3() {
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 300 + 300 * Math.abs(Math.cos(angle));
+    mainContext.arc(20, 40, radius, 2, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Green";
+    mainContext.fill();
+    
+    angle += Math.PI / 128;
+    
+     requestAnimationFrame(drawCircle3);
+     
+     
+}
+drawCircle3();
+
+
+
+function drawCircle5() {
+ 
+     
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 15 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(10, 20, radius, 2.5, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Black";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle5);
+     
+     
+}
+drawCircle5();
+
+
+function drawCircle6() {
+  
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 125 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(125, 675, radius, 4, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "#B90000";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle6);
+     
+     
+     
+     
+}
+drawCircle6();
+
+
+function drawCircle7() {
+  
+     
+    // draw the circle
+    mainContext.beginPath();
+    
+      var radius = 125 + 250 * Math.abs(Math.cos(angle));
+    mainContext.arc(25, 700, radius, 4, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    mainContext.fillStyle = "Green";
+    mainContext.fill();
+    
+    angle += Math.PI / 220;
+    
+     requestAnimationFrame(drawCircle7);
+     
+     
+     
+     
+}
+drawCircle7();
+
+</script>
+
+<svg height="100" width="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+  Sorry, your browser does not support inline SVG.  
+</svg> 
+
+</body>
+</html>
