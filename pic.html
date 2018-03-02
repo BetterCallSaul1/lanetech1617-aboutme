@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Haunted</title>
+<title> Call of Brick</title>
 <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
 
 body {
-    background-image: url("forest.jpg");
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/Vio80dDve/universe-background-with-stars-and-interstellar-gases_4nzzofwpx__F0000.png");
     background-color: #cccccc;
 }
 </style>
 </head>
  
 <div id="container">
-<canvas id="myCanvas" height="480" width="800" style="border:10px solid black;"></canvas>
+<canvas id="myCanvas" height="480" width="800" style="border:10px solid #CCA816;"></canvas>
 </div>
     <script> 
       var canvas = document.getElementById('myCanvas');
@@ -26,8 +26,9 @@ body {
       imageObj.onload = function() {
         ctx.drawImage(imageObj, 0, 0);
       };
-      imageObj.src = 'haunted.jpg';
+      imageObj.src = 'https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg ';
    }
+setInterval(drawPic,10);
 
 var x = canvas.width/2;
 var y = canvas.height - 30;
@@ -46,7 +47,7 @@ var dy2 = -2;
 var ballRadius = 10;
 var ballRadius2 = 10;
 var paddleHeight = 10;
-var paddleWidth = 175;
+var paddleWidth = 75;
 var paddleX = (canvas.width - paddleWidth)/2;
 
 var rightPressed = false;
@@ -171,9 +172,7 @@ function drawBall2(){
 
 
 
-
 function draw(){
-	drawPic();
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawBricks();
 	drawBall();
@@ -183,7 +182,6 @@ function draw(){
 	drawPaddle();
 	collisionDetection();
 	collisionDetection2();
-
 
 	x += dx;
 	y += dy;
@@ -236,7 +234,7 @@ if(rightPressed && paddleX < canvas.width-paddleWidth){
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-setInterval(draw, 5);
+setInterval(draw, 10);
 setInterval(drawBricks, 10);
 function keyDownHandler(e){
 	if(e.keyCode == 39){

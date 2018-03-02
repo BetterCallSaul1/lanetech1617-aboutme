@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Haunted</title>
+<title> Call of Brick</title>
 <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 0 auto; }
 
-body {
-    background-image: url("forest.jpg");
-    background-color: #cccccc;
-}
 </style>
 </head>
  
 <div id="container">
-<canvas id="myCanvas" height="480" width="800" style="border:10px solid black;"></canvas>
+<canvas id="myCanvas" height="480" width="800"></canvas>
 </div>
-    <script> 
-      var canvas = document.getElementById('myCanvas');
-      var ctx = canvas.getContext('2d');
-      
-   var imageObj = new Image();
-      function drawPic(){
-
-      imageObj.onload = function() {
-        ctx.drawImage(imageObj, 0, 0);
-      };
-      imageObj.src = 'haunted.jpg';
-   }
+<script>
+var canvas = document. getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
 
 var x = canvas.width/2;
 var y = canvas.height - 30;
@@ -46,7 +33,7 @@ var dy2 = -2;
 var ballRadius = 10;
 var ballRadius2 = 10;
 var paddleHeight = 10;
-var paddleWidth = 175;
+var paddleWidth = 75;
 var paddleX = (canvas.width - paddleWidth)/2;
 
 var rightPressed = false;
@@ -60,23 +47,22 @@ function drawScore(){
 	ctx.fillText("Score: " + score, 8, 20);
 }
 
-var lives = 3;
 
-function drawLives(){
-	ctx.font = "16px Arial";
-	ctx.fillStyle = "blue";
-	ctx.fillText("Lives: " + lives, 700, 20);
-	
-}
-
-
-var brickRows = 8,
+var brickRows = 3,
  brickCol = 9,
  brickW = 75,
  brickH = 20,
  brickPadding = 10,
  brickOffsetTop = 30,
  brickOffsetLeft = 30;
+ 
+var brickRows2 = 3,
+ brickCol2 = 9,
+ brickW2 = 75,
+ brickH2 = 20,
+ brickPadding2 = 10,
+ brickOffsetTop2 = 30,
+ brickOffsetLeft2 = 30;
  
  
  
@@ -90,6 +76,18 @@ var brickRows = 8,
           });
         }
       }
+      
+ var bricks2 = [];
+      for (c = 0; c < brickCol2; c++) {
+        for (r = 0; r < brickRows2; r++) {
+          bricks2.push({
+            x: (c * (brickW2 + brickPadding2)) + brickOffsetLeft2,
+            y: (r * (brickH2 + brickPadding2)) + brickOffsetTop2,
+            status: 1
+          });
+        }
+      }
+
 
 
 function drawBricks() {
@@ -98,6 +96,17 @@ function drawBricks() {
           ctx.beginPath();
           ctx.rect(brick.x, brick.y, brickW, brickH);
           ctx.fillStyle = "green";
+          ctx.fill();
+          ctx.closePath();
+        });
+      }
+      
+function drawBricks2() {
+        bricks2.forEach(function(brick2) {
+          if (!brick2.status) return;
+          ctx.beginPath();
+          ctx.rect(brick2.x, brick2.y, brickW2, brickH2);
+          ctx.fillStyle = "blue";
           ctx.fill();
           ctx.closePath();
         });
@@ -113,11 +122,6 @@ function collisionDetection() {
           if (inBricksColumn && inBricksRow) {
             dy = -dy;
             b.status = 0;
-            score++;
-            //if(score == inBricksColumn*inBricksRow) {
-                       // alert("YOU WIN, CONGRATULATIONS!");
-                       // document.location.reload();
-           // }
           }
         });
       }
@@ -126,24 +130,49 @@ function collisionDetection() {
       
       
     function collisionDetection2() {
-        bricks.forEach(function(a) {
-          if (!a.status) return;
+        bricks.forEach(function(b) {
+          if (!b.status) return;
 
-          var inBricksColumn = x2 > a.x && x2 < a.x + brickW,
-              inBricksRow = y2 > a.y && y2 < a.y + brickH;
+          var inBricksColumn = x2 > b.x && x2 < b.x + brickW,
+              inBricksRow = y2 > b.y && y2 < b.y + brickH;
 
           if (inBricksColumn && inBricksRow) {
             dy2 = -dy2;
-            a.status = 0;
-            score++;
-            //if(score == inBricksColumn*inBricksRow) {
-                      // alert("YOU WIN, CONGRATULATIONS!");
-                       // document.location.reload();
-                   // }
+            b.status = 0;
           }
         });
       }
 
+function collisionDetection3() {
+        bricks2.forEach(function(a) {
+          if (!a.status) return;
+
+          var inBricksColumn2 = x > a.x && x < a.x + brickW2,
+              inBricksRow2 = y > a.y && y < a.y + brickH2;
+
+          if (inBricksColumn2 && inBricksRow2) {
+            dy = -dy;
+            a.status = 0;
+          }
+        });
+      }
+      
+      
+      
+      
+    function collisionDetection4() {
+        bricks.forEach(function(a) {
+          if (!a.status) return;
+
+          var inBricksColumn2 = x2 > a.x && x2 < a.x + brickW2,
+              inBricksRow2 = y2 > a.y && y2 < a.y + brickH2;
+
+          if (inBricksColumn2 && inBricksRow2) {
+            dy2 = -dy2;
+            b.status = 0;
+          }
+        });
+      }
 
 function drawBall(){
 	ctx.beginPath();
@@ -173,17 +202,16 @@ function drawBall2(){
 
 
 function draw(){
-	drawPic();
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawBricks();
+	drawBricks2();
 	drawBall();
-	drawScore();
-	drawLives();
 	drawBall2();
 	drawPaddle();
 	collisionDetection();
 	collisionDetection2();
-
+	collisionDetection3();
+	collisionDetection4();
 
 	x += dx;
 	y += dy;
@@ -196,9 +224,7 @@ if(y + dy < ballRadius){
 	if(x > paddleX && x < paddleX + paddleWidth) {
 		dy = -dy;
 	} else{
-		alert("GAME OVER");
-		document.location.reload();
-		lives--;
+		//alert("GAME OVER");
 	}
 }
 
@@ -215,9 +241,7 @@ if(y2 + dy2 < ballRadius2){
 	if(x2 > paddleX && x < paddleX + paddleWidth) {
 		dy2 = -dy2;
 	} else{
-		alert("GAME OVER");
-	document.location.reload();
-	lives--;
+		//alert("GAME OVER");
 	}
 }
 
@@ -226,9 +250,9 @@ if(y2 + dy2 < ballRadius2){
 
 
 if(rightPressed && paddleX < canvas.width-paddleWidth){
-	paddleX += 7;
+	paddleX += 4;
 } else if(leftPressed && paddleX > 0){
-	paddleX -= 7;
+	paddleX -= 4;
 }
 
 }
@@ -236,8 +260,9 @@ if(rightPressed && paddleX < canvas.width-paddleWidth){
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-setInterval(draw, 5);
+setInterval(draw, 10);
 setInterval(drawBricks, 10);
+setInterval(drawBricks2, 10);
 function keyDownHandler(e){
 	if(e.keyCode == 39){
 		rightPressed = true;
