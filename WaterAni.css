@@ -1,0 +1,16 @@
+body
+{
+     margin:0;
+     padding:0;
+     background: #262626;
+}
+.cup
+{
+    position:absolute;
+    top:50%;
+    Left:50%;
+    transform: translateY(-50%, -50%);
+    width:150px;
+    height: 180px;
+    border: 6px solid #fff;
+}

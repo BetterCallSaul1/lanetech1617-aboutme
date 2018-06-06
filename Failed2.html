@@ -50,7 +50,7 @@
         */
 
         // base URL to the food inspections data
-        var baseURL = 'https://data.cityofchicago.org/resource/cwig-ma7x.json';
+        var baseURL = 'https://data.cityofchicago.org/resource/46rk-hgnz.json';
         
         // optional filters we're appending - status
 
@@ -72,7 +72,7 @@
                     // loop through the records
                     
                     $.each(data, function(index, value){
-                       var html =  "<div><h1>" + "Name: " + value.dba_name  + "</h1>" +
+                       var html =  "<div><h1>" + "Beach Name: " + value.beach_name  + "</h1>" +
                                     "<p>Results: " + value.results + "<br>" +
                                     "Address: " + value.address + "<br>" + 
                                     
