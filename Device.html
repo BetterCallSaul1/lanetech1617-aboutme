@@ -1,36 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<body>
-<head>
-<a href="tel:+1-303-499-7111">+1 (303) 499-7111</a>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.bg {
-    /* The image used */
-    background-image: url("http://animalnewyork.com/wp-content/uploads/better_call_saulround_lead.jpg");
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
-</style>
-</head>
-<body>
-
-<div class="bg"></div>
-
-<p>This example creates a full page background image. Try to resize the browser window to see how it always will cover the full screen (when scrolled to top), and that it scales nicely on all screen sizes.</p>
-
-</body>
+    <head>
+        <title>Get web visitor's location</title>
+        <meta name="robots" value="none" />
+    </head>
+    <body>
+    <div id="yourinfo"></div>
+    <script type="text/javascript" src="http://www.google.com/jsapi?key=<YOUR_GOOGLE_API_KEY>"></script>
+    <script type="text/javascript">
+        if(google.loader.ClientLocation)
+        {
+            visitor_lat = google.loader.ClientLocation.latitude;
+            visitor_lon = google.loader.ClientLocation.longitude;
+            visitor_city = google.loader.ClientLocation.address.city;
+            visitor_region = google.loader.ClientLocation.address.region;
+            visitor_country = google.loader.ClientLocation.address.country;
+            visitor_countrycode = google.loader.ClientLocation.address.country_code;
+            document.getElementById('yourinfo').innerHTML = '<p>Lat/Lon: ' + visitor_lat + ' / ' + visitor_lon + '</p><p>Location: ' + visitor_city + ', ' + visitor_region + ', ' + visitor_country + ' (' + visitor_countrycode + ')</p>';
+        }
+        else
+        {
+            document.getElementById('yourinfo').innerHTML = '<p>Whoops!</p>';
+        }
+    </script>
+    </body>
 </html>

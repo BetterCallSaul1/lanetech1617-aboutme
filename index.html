@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <a href="tel:+1-872-499-7111">+1 (303) 499-7111</a>
+    <a href="tel:+1-872-648-7972">+1 (303) 499-7111</a>
+    <a href="tel:+1-872-589-3811">+1 (303) 499-7111</a>
 <meta charset="utf-8">
 <meta content="stuff, to, help, search, engines, not" name="keywords">
 <meta content="What this page is about." name="description">
 <meta content="Display Webcam Stream" name="title">
-<title>Display Webcam Stream</title>
+<title>Webcam </title>
   
 <style>
 #container {
@@ -43,7 +44,27 @@ function handleVideo(stream) {
 }
  
 function videoError(e) {
-    // do something
+    
+}
+
+<p id="demo">Click the button to get your coordinates:</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;  
 }
 
 </script>
